@@ -55,11 +55,25 @@ def longestPath(s):
     for i in range(V):
         print("INF ",end="") if (dist[i] == -10**9) else print(dist[i],end=" ")
  
-# Driver code
-n = int(input())
 
+n = int(input())
+# input is like:
+# node, time to take, list of nodes 
+# 0 3 
+# 1 1 0
+# 2 1 0 1
+# 3 2 2
+# 
 for i in range(n):
-    
+    line = input().split()
+    node, time = line[0], line[1]
+    # append weight
+    if len(line) < 3:
+        continue
+    else:
+        length = len(line[1:]
+        for i in range(length):
+            adj[0].append([node, 5])
 if __name__ == '__main__':
     V, Stack, visited = 6, [], [False for i in range(7)]
     adj = [[] for i in range(7)]
