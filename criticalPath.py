@@ -44,3 +44,38 @@ Compute the critical path by iterating over all tasks and checking if their earl
 
 The function returns a tuple containing the earliest start time and latest start time of each task, as well as the list of tasks on the critical path.
 """
+
+n = int(input())
+# node time dictionary 
+nodeTimeDict = {}
+# graph dictionary
+graph = {}
+for i in range(n):
+    line = input().split()
+    node, time = line[0], line[1]
+    # print(f"node and time {node}, {time}")
+    # append weight
+    nodeTimeDict[node] = time
+    graph[node] = list()
+    if len(line) < 3:
+        # do nothing
+        continue
+    else:
+        #length = len(line[2:])
+        dependendNodes = line[2:]
+        #print(f"len of dependent nodes {length}")
+        #graph[node] = 
+        for i in dependendNodes:
+            # build the graphs
+            graph[node].append(i)
+            #adj[0].append([node, 5])
+            #print(f"dependent node {i}")
+
+#print(graph)
+graphConnections = []
+for key, value in graph.items():
+    #print(f"key, value {key} {value}")
+    for v in value:
+        graphConnections.append([int(v), int(key)])
+print(graphConnections)
+#print(nodeTimeDict)
