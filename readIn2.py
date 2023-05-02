@@ -35,26 +35,23 @@ earliest_start_times = {}
 # graph dictionary
 graph = {}
 for i in range(n):
-    line = input().split()
-    node, time = line[0], line[1]
-    # append weight of the node
+    parts = input().split(':')
+    node = int(parts[0])
+    time = int(parts[1])
     execution_times[node] = time
     earliest_start_times[node] = -float('inf')
     graph[node] = list()
-    if len(line) < 3:
+    if len(parts[2]) == 0:
         # do nothing
         continue
     else:
-        dependendNodes = line[2:]
+        dependendNodes = [int(e) for e in parts[2].split(',')]
+        #dependendNodes
         for i in dependendNodes:
             # build the graphs
             graph[node].append(i)
-            #adj[0].append([node, 5])
             #print(f"dependent node {i}")
 
-# generate the graph
-# [0, 1] 0 -> 1
-# [2, 3] 2 -> 3
 graphConnections = []
 for key, value in graph.items():
     #print(f"key, value {key} {value}")
