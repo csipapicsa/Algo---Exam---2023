@@ -78,4 +78,5 @@ for key, value in graph.items():
     for v in value:
         graphConnections.append([int(v), int(key)])
 print(graphConnections)
+print(critical_path(graphConnections))
 #print(nodeTimeDict)
