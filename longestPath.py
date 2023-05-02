@@ -64,6 +64,13 @@ n = int(input())
 # 2 1 0 1
 # 3 2 2
 # 
+
+# need to be updated:
+
+V, Stack, visited = 6, [], [False for i in range(7)]
+adj = [[] for i in range(7)
+
+
 for i in range(n):
     line = input().split()
     node, time = line[0], line[1]
@@ -74,6 +81,13 @@ for i in range(n):
         length = len(line[1:]
         for i in range(length):
             adj[0].append([node, 5])
+
+s = 1            
+print("Following are longest distances from source vertex ",s)
+longestPath(s)
+
+
+"""           
 if __name__ == '__main__':
     V, Stack, visited = 6, [], [False for i in range(7)]
     adj = [[] for i in range(7)]
@@ -98,3 +112,4 @@ if __name__ == '__main__':
     longestPath(s)
  
     # This code is contributed by mohit kumar 29.
+"""
