@@ -75,8 +75,8 @@ def readIn ():
         #print(f"key, value {key} {value}")
         for v in value:
             graphConnections[int(v)].append(key)
-    print(graphConnections)
-    print(execution_times)
+    #print(graphConnections)
+    #print(execution_times)
     # print(critical_path(graphConnections))
     #print(nodeTimeDict)
     return graphConnections, execution_times
