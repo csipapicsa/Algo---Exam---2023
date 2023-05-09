@@ -1,3 +1,5 @@
+import readIn2 as r
+
 def topological_sort(graph):
     """
     Perform a topological sort on a directed acyclic graph (DAG).
@@ -12,8 +14,11 @@ def topological_sort(graph):
     Raises:
         ValueError: If the graph contains a cycle.
     """
+    #for node[0] in graph: print(node[0])
     # Create a dictionary to keep track of the in-degree of each node
+    #in_degree = {node[0]: 0 for node in graph}
     in_degree = {node: 0 for node in graph}
+    #print(f"indegree {in_degree}")
 
     # Calculate the in-degree of each node
     for node in graph:
@@ -44,3 +49,8 @@ def topological_sort(graph):
         raise ValueError("The graph contains a cycle")
 
     return topo_order
+
+graph, execution_times = r.readIn()
+#print(graph)
+#print(f"topo order is")
+print(topological_sort(graph))
