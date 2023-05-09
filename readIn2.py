@@ -28,36 +28,55 @@ def critical_path(execution_times, earliest_start_times, graphConnections):
 
     return critical_path_duration
 
-n = int(input())
-# node time dictionary 
-execution_times = {}
-earliest_start_times = {}
-# graph dictionary
-graph = {}
-for i in range(n):
-    parts = input().split(':')
-    node = int(parts[0])
-    time = int(parts[1])
-    execution_times[node] = time
-    earliest_start_times[node] = -float('inf')
-    graph[node] = list()
-    if len(parts[2]) == 0:
-        # do nothing
-        continue
-    else:
-        dependendNodes = [int(e) for e in parts[2].split(',')]
-        #dependendNodes
-        for i in dependendNodes:
-            # build the graphs
-            graph[node].append(i)
-            #print(f"dependent node {i}")
+def readIn ():
+    n = int(input())
+    # node time dictionary 
+    execution_times = {}
+    earliest_start_times = {}
+    # graph dictionary
+    graph = {}
+    for i in range(n):
+        parts = input().split(':')
+        node = int(parts[0])
+        time = int(parts[1])
+        execution_times[node] = time
+        earliest_start_times[node] = -float('inf')
+        graph[node] = list()
+        if len(parts[2]) == 0:
+            # do nothing
+            continue
+        else:
+            dependendNodes = [int(e) for e in parts[2].split(',')]
+            #dependendNodes
+            for i in dependendNodes:
+                # build the graphs
+                graph[node].append(i)
+                #print(f"dependent node {i}")
 
-graphConnections = []
-for key, value in graph.items():
-    #print(f"key, value {key} {value}")
-    for v in value:
-        graphConnections.append([int(v), int(key)])
-print(graphConnections)
-print(execution_times)
-# print(critical_path(graphConnections))
-#print(nodeTimeDict)
+    """graphConnections = []
+    for key, value in graph.items():
+        #print(f"key, value {key} {value}")
+        for v in value:
+            graphConnections.append([int(v), int(key)])
+    """        
+    # new method
+    graphConnectionsSet = set()
+    for key, value in graph.items():
+        graphConnectionsSet.add(key)
+    
+    #print(graphConnectionsSet)
+    # init dictionary
+    graphConnections = {}
+    for k in graphConnectionsSet:
+        graphConnections[k] = list()
+    
+    #print(graphConnections)
+    for key, value in graph.items():
+        #print(f"key, value {key} {value}")
+        for v in value:
+            graphConnections[int(v)].append(key)
+    print(graphConnections)
+    print(execution_times)
+    # print(critical_path(graphConnections))
+    #print(nodeTimeDict)
+    return graphConnections, execution_times

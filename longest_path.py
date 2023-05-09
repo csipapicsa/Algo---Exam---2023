@@ -10,9 +10,9 @@ class Link:
 
 
 nodes = dict()
-n = int(input())
-
-links = []
+#n = int(input())
+n = 10
+#links = []
 
 for _ in range(n):
     name, weight, depends = input().split(':')
