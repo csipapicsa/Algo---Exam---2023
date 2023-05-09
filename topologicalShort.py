@@ -16,7 +16,8 @@ def topological_sort(graph):
     """
     #for node[0] in graph: print(node[0])
     # Create a dictionary to keep track of the in-degree of each node
-    in_degree = {node[0]: 0 for node in graph}
+    #in_degree = {node[0]: 0 for node in graph}
+    in_degree = {node: 0 for node in graph}
     print(f"indegree {in_degree}")
 
     # Calculate the in-degree of each node
@@ -51,5 +52,5 @@ def topological_sort(graph):
 
 graph, execution_times = r.readIn()
 #print(graph)
-
-topological_sort(graph)
+print(f"topo order is")
+print(topological_sort(graph))
