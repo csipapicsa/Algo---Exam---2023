@@ -12,7 +12,7 @@ graph[nodes[0]] = (random.randint(1, max_time), [])
 
 
 for ind, node in enumerate(nodes[1:]):
-    amount_depend = random.randint(1, ind+1)
+    amount_depend = random.randint(1, min(ind+1, 5))
     depends = random.sample(graph.keys(), amount_depend)
     graph[node] = (random.randint(1, max_time), depends)
 
@@ -23,13 +23,9 @@ for i in graph:
 
 for i in graph:
     for j in graph[i][1]:
-        print(i, j)
         op_graph[j][1].append(i)
 
-for i in graph:
-    print(f'{i}: {graph[i]}')
-
-print('------------------------')
-
+print(len(op_graph))
 for i in op_graph:
-    print(f'{i}: {op_graph[i]}')
+    letter = random.choice(['C', 'V'])
+    print(f"{i}:{op_graph[i][0]}:{letter}:{' '.join(map(str, op_graph[i][1]))}")
