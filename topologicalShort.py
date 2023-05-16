@@ -52,6 +52,8 @@ def topological_sort(graph):
 
 graph, nodeTypeDict, executionTimesDict  = r.readIn()
 print(f"graph is {graph}, type of the graph is {type(graph)}")
+print(nodeTypeDict)
+print(executionTimesDict)
 
 #print(graph)
 #print(f"topo order is")

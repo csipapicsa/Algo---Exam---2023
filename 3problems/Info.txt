@@ -1,0 +1,9 @@
+
+
+1. Minimum Spanning Tree
+https://open.kattis.com/problems/minspantree
+
+Maybe:
+X. Tourists
+https://open.kattis.com/problems/tourists?tab=metadata
+
