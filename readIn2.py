@@ -31,22 +31,24 @@ def critical_path(execution_times, earliest_start_times, graphConnections):
 def readIn ():
     n = int(input())
     # node time dictionary 
-    execution_times = {}
+    executionTimes = {}
     earliest_start_times = {}
+    nodeType = {}
     # graph dictionary
     graph = {}
     for i in range(n):
         parts = input().split(':')
-        node = int(parts[0])
-        time = int(parts[1])
-        execution_times[node] = time
+        node = int(parts[0]) # node 
+        time = int(parts[1]) # cost
+        nodeType[node] = parts[2] # type of the node V or C
+        executionTimes[node] = time
         earliest_start_times[node] = -float('inf')
         graph[node] = list()
-        if len(parts[2]) == 0:
+        if len(parts[3]) == 0:
             # do nothing
             continue
         else:
-            dependendNodes = [int(e) for e in parts[2].split(',')]
+            dependendNodes = [int(e) for e in parts[3].split()]
             #dependendNodes
             for i in dependendNodes:
                 # build the graphs
@@ -78,5 +80,5 @@ def readIn ():
     #print(graphConnections)
     #print(execution_times)
     # print(critical_path(graphConnections))
-    #print(nodeTimeDict)
-    return graphConnections, execution_times
+    #print(nodeTimeDict)t
+    return graphConnections, nodeType, executionTimes
