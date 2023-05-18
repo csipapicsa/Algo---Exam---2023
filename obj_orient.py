@@ -148,3 +148,5 @@ if __name__ == "__main__":
     path_finder.turn_dial(dial)
 
     print(path_finder.get_critical_path(), dial)
+
+    print(path_finder.top_order)
