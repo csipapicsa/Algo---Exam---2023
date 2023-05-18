@@ -3,6 +3,11 @@
 1. Minimum Spanning Tree
 https://open.kattis.com/problems/minspantree
 
+2. Knigs of the Forest
+https://open.kattis.com/problems/knigsoftheforest
+
+
+
 Maybe:
 X. Tourists
 https://open.kattis.com/problems/tourists?tab=metadata
