@@ -1,7 +1,7 @@
 import random
 from collections import defaultdict
 
-n = 10
+n = 1000
 max_time = 100
 graph = dict()
 
@@ -29,3 +29,5 @@ print(len(op_graph))
 for i in op_graph:
     letter = random.choice(['C', 'V'])
     print(f"{i}:{op_graph[i][0]}:{letter}:{' '.join(map(str, op_graph[i][1]))}")
+
+print(1300)
