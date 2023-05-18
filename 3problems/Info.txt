@@ -3,7 +3,21 @@
 1. Minimum Spanning Tree
 https://open.kattis.com/problems/minspantree
 
+2. Knigs of the Forest
+https://open.kattis.com/problems/knigsoftheforest
+
+
+
 Maybe:
 X. Tourists
 https://open.kattis.com/problems/tourists?tab=metadata
 
+https://github.com/TimonKnigge/Competitive-Programming/blob/master/Kattis/tourist.cpp
+
+https://github.com/donaldong/kattis/blob/main/solutions/tourists/tourists.cpp
+
+
+X. MAgic Trick
+https://open.kattis.com/problems/cardmagic?tab=metadata
+
+Working solution
