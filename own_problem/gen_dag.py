@@ -1,8 +1,8 @@
 import random
 from collections import defaultdict
 
-n = 1000
-max_time = 100
+n = 10000
+max_time = 10000
 graph = dict()
 
 nodes = list(range(0, n))
@@ -33,5 +33,3 @@ print(len(op_graph))
 for i, val in op_graph_items:
     letter = random.choice(['C', 'V'])
     print(f"{i}:{val[0]}:{letter}:{' '.join(map(str, val[1]))}")
-
-print(1300)

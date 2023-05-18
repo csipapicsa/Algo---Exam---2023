@@ -65,7 +65,7 @@ class PathFinder():
 
         for node in self.top_order:
             if node.variability == 'V':
-                node.time = node.original_time * amount
+                node.time = node.original_time * (amount / 1000)
 
 
     def _compute_longest_paths(self):
@@ -105,7 +105,7 @@ class PathFinder():
         return critical_path, max_node.sum_time
 
 
-class binary_search: 
+class BinarySearch: 
     def __init__(self, topspeed):
         self.topspeed = topspeed
         self.visited = []
@@ -120,33 +120,3 @@ class binary_search:
 
 
 
-if __name__ == "__main__":
-    path_finder = PathFinder()
-
-    correct_time = int(input())
-
-    bs = binary_search(1)
-
-    path, time = path_finder.get_critical_path()
-    prev_path = None
-
-    while abs(correct_time - time) > 0.00001:
-        dial = bs.step(correct_time - time > 0)
-        print(dial)
-        path_finder.turn_dial(dial)
-        path, time = path_finder.get_critical_path()
-        if path == prev_path and (prev_time > correct_time > time or time > correct_time > prev_time):
-            b = prev_time
-            a = (time - prev_time) / (dial - prev_dial)
-            dial = ((correct_time - b) / a) + prev_dial
-            break
-        prev_dial = dial
-        prev_path, prev_time = path, time
-
-    print(path_finder.get_critical_path(), dial)
-
-    path_finder.turn_dial(dial)
-
-    print(path_finder.get_critical_path(), dial)
-
-    print(path_finder.top_order)
