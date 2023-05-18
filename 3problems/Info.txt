@@ -7,3 +7,6 @@ Maybe:
 X. Tourists
 https://open.kattis.com/problems/tourists?tab=metadata
 
+https://github.com/TimonKnigge/Competitive-Programming/blob/master/Kattis/tourist.cpp
+
+https://github.com/donaldong/kattis/blob/main/solutions/tourists/tourists.cpp
