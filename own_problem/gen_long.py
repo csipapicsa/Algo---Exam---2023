@@ -1,11 +1,18 @@
-n = 10000
+from sys import argv
 
-print(n)
+n = 100
 
-for i in range(n):
-    if i == 0:
-        print(str(i)+':100000:V:')
-        continue
-    print(str(i)+':100000:V:'+str(i-1))
+with open(argv[1], 'w') as file:
+    file.write(str(n))
+    file.write('\n')
+    print(n)
 
-print(str(int((n*100000)/1.5683754)))
+    for i in range(n):
+        if i == 0:
+            file.write(str(i)+':100000:V:')
+            file.write('\n')
+            print(str(i)+':100000:V:')
+            continue
+        file.write(str(i)+':100000:V:'+str(i-1))
+        file.write('\n')
+        print(str(i)+':100000:V:'+str(i-1))

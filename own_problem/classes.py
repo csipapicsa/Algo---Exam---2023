@@ -1,7 +1,7 @@
 from collections import defaultdict
 
 
-class Node():
+class Node:
     def __init__(self):
         self.neighbors = []
         self.dependencies = []
@@ -10,26 +10,13 @@ class Node():
         return self.name
     
 
-class PathFinder():
+class Graph:
+
     def __init__(self):
         self.nodes = defaultdict(Node)
         self.no_dependencies = []
 
         self.load_data()
-        self.find_top_order()
-
-    def find_top_order(self):
-        self.top_order = []
-
-        while self.no_dependencies:
-            current = self.no_dependencies.pop()
-            self.top_order.append(current)
-
-            for neighbor in current.neighbors:
-                neighbor.unaccounted_deps -= 1
-
-                if neighbor.unaccounted_deps == 0:
-                    self.no_dependencies.append(neighbor)
 
     def load_data(self):
 
@@ -66,6 +53,28 @@ class PathFinder():
                 node.time = node.original_time * (amount / 1000)
 
 
+    
+    
+
+class CriticalPath(Graph):
+
+    def __init__(self):
+        super().__init__()
+        self.find_top_order()
+
+    def find_top_order(self):
+        self.top_order = []
+
+        while self.no_dependencies:
+            current = self.no_dependencies.pop()
+            self.top_order.append(current)
+
+            for neighbor in current.neighbors:
+                neighbor.unaccounted_deps -= 1
+
+                if neighbor.unaccounted_deps == 0:
+                    self.no_dependencies.append(neighbor)
+
     def _compute_longest_paths(self):
         '''
         Computes the longest path to each node in self.nodes
@@ -89,6 +98,11 @@ class PathFinder():
                 current = node
         return current
     
+    def get_time(self):
+        self._compute_longest_paths()
+        max_node = self._find_max_node()
+
+        return max_node.sum_time
 
     def get_critical_path(self):
         self._compute_longest_paths()
@@ -104,6 +118,7 @@ class PathFinder():
 
 
 class BinarySearch: 
+
     def __init__(self, topspeed):
         self.topspeed = topspeed
         self.visited = []
@@ -119,42 +134,45 @@ class BinarySearch:
 
 
 # WRONG SOLUTIONS
-
-class DFS(PathFinder):
-    def __init__(self):
-        self.nodes = defaultdict(Node)
-        self.no_dependencies = []
-
-        self.load_data()
-
-    def depth_first(self, current, sum_time, all_times):
-        sum_time += current.time
-        all_times.append(sum_time)
-        for neighbor in current.neighbors:
-            self.depth_first(neighbor, sum_time, all_times)
-
-    def depth_first_no_replace(self, current, sum_time, visited, all_times):    
-        sum_time += current.time
-        visited.add(current)
-        all_times.append(sum_time)
-        for neighbor in current.neighbors:
-            if neighbor not in visited:
-                self.depth_first_no_replace(neighbor, sum_time, visited, all_times)
-
-    def search_wrong(self):
-        visited = set()
-        all_times = []
-        for node in self.no_dependencies:
-            self.depth_first_no_replace(node, 0, visited, all_times)  
-
-        return max(all_times)
     
-    def search_slow(self):
+
+class DfsSlow(Graph):
+
+    def _depth_first(self, current, sum_time, all_times):
+
+        sum_time += current.time
+        all_times.append(sum_time)
+
+        for neighbor in current.neighbors:
+            self._depth_first(neighbor, sum_time, all_times)
+
+    def get_time(self):
         all_times = []
         for node in self.no_dependencies:
             self.depth_first(node, 0, all_times)  
 
         return max(all_times)
+    
+class DfsWrong(Graph):
+
+    def _depth_first(self, current, sum_time, visited, all_times):    
+        sum_time += current.time
+        all_times.append(sum_time)
+
+        visited.add(current)
+
+        for neighbor in current.neighbors:
+            if neighbor not in visited:
+                self._depth_first(neighbor, sum_time, visited, all_times)
+
+    def get_time(self):
+        all_times = []
+        visited = set()
+        for node in self.no_dependencies:
+            self._depth_first(node, 0, visited, all_times)  
+
+        return max(all_times)
+    
 
 
     
