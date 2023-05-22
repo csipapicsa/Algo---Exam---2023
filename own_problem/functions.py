@@ -22,16 +22,14 @@ def check_limits(path_finder, correct_time):
 def search_analytic(path_finder, correct_time):
 
     bs = BinarySearch(1000)
-    dial = 1000
     path, time = path_finder.get_critical_path()
     prev_path = None
 
-    while True:
-        
+    while True:     
         dial = bs.step(correct_time - time > 0)
         path_finder.turn_dial(dial)
         path, time = path_finder.get_critical_path()
-        if path == prev_path and (time > correct_time > prev_time or time < correct_time < prev_time):
+        if path == prev_path and (time >= correct_time >= prev_time or time <= correct_time <= prev_time):
             a = (prev_time - time) / (prev_dial - dial)
             dial = ((correct_time - time) / a) + dial
             break
@@ -41,9 +39,10 @@ def search_analytic(path_finder, correct_time):
     return dial
 
 
-def search(path_finder):
+def search(path_finder, correct_time):
     bs = BinarySearch(1000)
 
+    dial = 1000
     time = path_finder.get_time()
 
     while abs(correct_time - time) > 0.01:

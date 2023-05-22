@@ -10,7 +10,6 @@ while True:
         if check_limits(path_finder, correct_time):
             continue
         dial = search_analytic(path_finder, correct_time)
-        print(correct_time)
         print(dial)
     except EOFError:
         break

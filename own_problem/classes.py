@@ -149,7 +149,7 @@ class DfsSlow(Graph):
     def get_time(self):
         all_times = []
         for node in self.no_dependencies:
-            self.depth_first(node, 0, all_times)  
+            self._depth_first(node, 0, all_times)  
 
         return max(all_times)
     
