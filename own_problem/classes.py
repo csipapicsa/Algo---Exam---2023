@@ -24,25 +24,23 @@ class Graph:
         visited = set()
         recursion_stack = set()
 
-        def dfs(node_):
-            node = node_.name
-            visited.add(node)
-            recursion_stack.add(node)
+        def dfs(node):
+            visited.add(node.name)
+            recursion_stack.add(node.name)
 
-            for neighbor_ in self[node].neighbors:
+            for neighbor_ in node.neighbors:
                 neighbor = neighbor_.name
                 if neighbor in recursion_stack:
                     return True
                 if neighbor not in visited:
-                    if dfs(neighbor, node):
+                    if dfs(neighbor_):
                         return True
-            recursion_stack.remove(node)
+            recursion_stack.remove(node.name)
             return False
 
-        for node_ in self.nodes:
-            node = node_.name
-            if node not in visited:
-                if dfs(node_, None):
+        for node_name, node in list(self.nodes.items()):
+            if node_name not in visited:
+                if dfs(node):
                     return True
         return False
 
@@ -114,7 +112,7 @@ class Graph:
 
 class CriticalPath(Graph):
 
-    def __init__(self, strings):
+    def __init__(self, strings=False):
         super().__init__(strings)
         self.find_top_order()
 

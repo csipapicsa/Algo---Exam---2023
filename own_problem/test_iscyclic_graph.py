@@ -2,4 +2,4 @@ from classes import CriticalPath
 
 g = CriticalPath()
 
-print(g.nodes)
+print(g.is_cyclic())
