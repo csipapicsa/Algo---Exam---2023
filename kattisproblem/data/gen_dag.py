@@ -1,11 +1,14 @@
+#! /usr/env/python3
+
 import random
 from collections import defaultdict
 from classes import CriticalPath
-from sys import argv, stdin
+from sys import argv
 
 n = int(argv[1])
 max_time = int(argv[2])
 num_test_cases = int(argv[3])
+max_connections = int(argv[4])
 
 graph = dict()
 
@@ -16,7 +19,7 @@ graph[nodes[0]] = (random.randint(1, max_time), [])
 
 
 for ind, node in enumerate(nodes[1:]):
-    amount_depend = random.randint(1, min(ind+1, 3))
+    amount_depend = random.randint(1, min(ind+1, max_connections))
     depends = random.sample(graph.keys(), amount_depend)
     graph[node] = (random.randint(1, max_time), depends)
 

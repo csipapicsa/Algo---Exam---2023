@@ -88,7 +88,7 @@ class Graph:
 
 class CriticalPath(Graph):
 
-    def __init__(self, strings):
+    def __init__(self, strings=False):
         super().__init__(strings)
         self.find_top_order()
 
