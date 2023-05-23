@@ -20,6 +20,30 @@ class Graph:
         else:
             self.load_data()
 
+    def is_cyclic(self):
+        visited = set()
+        recursion_stack = set()
+
+        def dfs(node):
+            visited.add(node.name)
+            recursion_stack.add(node.name)
+
+            for neighbor_ in node.neighbors:
+                neighbor = neighbor_.name
+                if neighbor in recursion_stack:
+                    return True
+                if neighbor not in visited:
+                    if dfs(neighbor_):
+                        return True
+            recursion_stack.remove(node.name)
+            return False
+
+        for node_name, node in list(self.nodes.items()):
+            if node_name not in visited:
+                if dfs(node):
+                    return True
+        return False
+
     def load_data(self):
 
         n = int(input())
