@@ -10,6 +10,8 @@ max_time = int(argv[2])
 num_test_cases = int(argv[3])
 max_connections = int(argv[4])
 
+random.seed(int(argv[5]))
+
 graph = dict()
 
 nodes = list(range(0, n))
