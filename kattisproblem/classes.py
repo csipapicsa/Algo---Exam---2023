@@ -12,13 +12,11 @@ class Node:
 
 class Graph:
 
-    def __init__(self, strings=False):
+    def __init__(self):
         self.nodes = defaultdict(Node)
         self.no_dependencies = []
-        if strings:
-            self.from_strings(strings)
-        else:
-            self.load_data()
+
+        self.load_data()
 
     def load_data(self):
 
@@ -48,34 +46,6 @@ class Graph:
             for dependency in node.dependencies:
                 dependency.neighbors.append(node) 
 
-    def from_strings(self, list_of_strings):
-        n = list_of_strings[0]
-
-        for inp in list_of_strings[1:]:
-            info = inp.split(':')
-
-            name = int(info[0].strip())
-            time = int(info[1].strip())
-            variability = info[2].strip()
-            dependencies_str = info[3].strip()
-
-            node = self.nodes[name]
-            node.name = str(name)
-            node.original_time = time
-            node.time = time
-            node.variability = variability
-        
-            if dependencies_str:
-                node.dependencies = [self.nodes[int(dep)] for dep in dependencies_str.split(' ')]
-            else:
-                self.no_dependencies.append(node)
-
-            node.unaccounted_deps = len(node.dependencies)
-
-            for dependency in node.dependencies:
-                dependency.neighbors.append(node) 
-
-
     def turn_dial(self, amount):
 
         for node in self.nodes.values():
@@ -88,8 +58,8 @@ class Graph:
 
 class CriticalPath(Graph):
 
-    def __init__(self, strings):
-        super().__init__(strings)
+    def __init__(self):
+        super().__init__()
         self.find_top_order()
 
     def find_top_order(self):

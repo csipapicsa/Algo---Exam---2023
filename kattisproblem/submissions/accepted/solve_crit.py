@@ -1,6 +1,3 @@
-import sys
-sys.path.insert(0, '..')
-
 from classes import CriticalPath
 from functions import search, check_limits
 
