@@ -4,7 +4,8 @@ import sys
 
 def assert_no_leading_zero(string_int):
     assert len(string_int) > 0
-    assert string_int[0] != 0 or len(string_int) == 1
+    assert string_int[0] != '0' or len(string_int) == 1
+
 
 
 n_string = input().strip()

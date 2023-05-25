@@ -54,9 +54,13 @@ def get_range():
     low = path_finder.get_critical_path()[1]
     return low, high
 
-
+impossible = random.sample(range(num_test_cases), num_test_cases // 10)
 low, high = get_range()
-for _ in range(num_test_cases):
+for i in range(num_test_cases):
+    if i in impossible:
+        strings.append(str(random.randint(int(low), int(high)) - int(low)))
+        continue
+
     strings.append(str(random.randint(int(low), int(high))))
 
 

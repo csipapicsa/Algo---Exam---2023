@@ -12,11 +12,11 @@ random.seed(int(argv[4]))
 print(n)
 
 for i in range(n):
-    if i == 0:
+    if i == 0 or i == 1:
         print(str(i)+':'+ str(lengths) + ':V:')
         continue
 
-    print(str(i)+':'+ str(lengths) + ':V:'+str(i-1))
+    print(str(i)+':'+ str(lengths) + ':V:'+str(i-1)+' '+str(i-2))
 
 for _ in range(num_test_cases):
     print(random.randint(1, lengths * n))

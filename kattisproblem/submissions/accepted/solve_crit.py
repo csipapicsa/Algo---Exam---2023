@@ -246,6 +246,10 @@ def check_limits(path_finder, correct_time):
         print("Impossible")
         return True
     
+    if correct_time == time:
+        print(0)
+        return True
+    
     return False
 
 
@@ -273,9 +277,16 @@ def search(path_finder, correct_time):
     bs = BinarySearch(1000)
 
     dial = 1000
+    path_finder.turn_dial(1000)
     time = path_finder.get_time()
+    high_time = time
 
-    while abs(correct_time - time) > 0.01:
+    path_finder.turn_dial(0)
+    low_time = path_finder.get_time()
+
+    precision = (high_time - low_time) / 100000
+
+    while abs(correct_time - time) > precision:
         dial = bs.step(correct_time - time > 0)
         path_finder.turn_dial(dial)
         time = path_finder.get_time()
