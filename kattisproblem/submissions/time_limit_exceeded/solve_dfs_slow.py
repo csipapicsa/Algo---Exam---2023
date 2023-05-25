@@ -289,15 +289,14 @@ def search(path_finder, correct_time):
     return dial
 
 
-path_finder = CriticalPath()
-
-
+path_finder = DfsSlow()
 while True:
     try:
         correct_time = int(input())
         if check_limits(path_finder, correct_time):
             continue
-        dial = search_analytic(path_finder, correct_time)
+        
+        dial = search(path_finder, correct_time)
         print(dial)
     except EOFError:
         break
