@@ -11,13 +11,13 @@ You're not sure if you're gonna be able to make it in time with all those steps,
 
 \section*{Input}
 
-The input consists an integer $1 \leq n \leq 100000$, the amount of steps in the recipe. The next $n$ lines consist of the steps in the recipe with each line being of the form 
+The input consists an integer $1 \leq n \leq 1000$, the amount of steps in the recipe. The next $n$ lines consist of the steps in the recipe with each line being of the form 
 $$
 N:T:V:D
 $$
-where $N$ is the name of the step (an integer $0 \leq N < n$), $T$ (an integer $0 \leq T \leq 1000000$) is the base time in minutes to complete the step, $V$ is either $"V"$, meaning variable, or $"C"$, meaning constant, denoting whether the step can be sped up by turning the dial, and $D$ is a space separated list of all the steps this step depends on (max $10$).
+where $N$ is the name of the step (an integer $0 \leq N < n$), $T$ (an integer $0 \leq T \leq 10000$) is the base time in minutes to complete the step, $V$ is either $"V"$, meaning variable, or $"C"$, meaning constant, denoting whether the step can be sped up by turning the dial, and $D$ is a space separated list of all the steps this step depends on (max $10$).
 
-The next $1 \leq m \leq 1000$ lines consist of test cases each of which is an integer $t$, representing the amount of minutes before the guests arrive that the kitchen is turned on. 
+The next $1 \leq m \leq 100$ lines consist of test cases each of which is an integer $t$, representing the amount of minutes before the guests arrive that the kitchen is turned on. 
 
 
 \section*{Output}
