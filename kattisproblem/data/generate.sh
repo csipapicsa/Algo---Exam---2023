@@ -19,4 +19,4 @@ tc  random3 gen_dag 1000 10000 100 10 3
 tc  random4 gen_dag 1000 10000 100 10 4
 tc  random5 gen_dag 1000 10000 100 10 5
 tc  random6 gen_dag 1000 10000 100 10 6
-tc  random7 gen_dag 100 1000 70 5 7
+tc  random7 gen_dag 100 10000 10 5 7

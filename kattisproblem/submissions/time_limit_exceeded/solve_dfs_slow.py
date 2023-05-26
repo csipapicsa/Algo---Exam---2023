@@ -3,6 +3,8 @@
 import sys
 sys.path.insert(0, '..')
 
+sys.setrecursionlimit(10**5)
+
 
 #from libs.classes import CriticalPath
 #from libs.functions import search_analytic, check_limits
